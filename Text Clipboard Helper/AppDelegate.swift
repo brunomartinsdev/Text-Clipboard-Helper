@@ -16,12 +16,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
+        autoPaste()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
 
+    func autoPaste(){
+    let scriptToRun = NSAppleScript(source: "tell application \"System Events\" \n keystroke \"v\" using command down \n end tell")
+    
+    if let script = scriptToRun  {
+        var errorFound: NSDictionary?
+        script.executeAndReturnError(&errorFound)
+        
+        if let error = errorFound {
+            println("Error found: \(error.debugDescription)")
+        }
 
+    }
+        NSApplication.sharedApplication().terminate(self)
+        
+    }
+
+    
+ 
+    
 }
 
