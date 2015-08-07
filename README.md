@@ -11,3 +11,5 @@ Use this code:
   task.launch()
   task.waitUntilExit()
   ```
+
+This app works on OSX 10.0 or superior.
